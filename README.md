@@ -34,13 +34,11 @@ To run the code, follow these steps:
     ```sh
     mvn exec:java 
     ```
-or
+
+4. Run the jar file:
     ```sh
-    mvn package
-    cd target
     java -jar javaplaygroung-1.0-SNAPSHOT.jar
     ```
-
 
 ## License
 
