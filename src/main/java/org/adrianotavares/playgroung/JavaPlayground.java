@@ -3,18 +3,28 @@ package org.adrianotavares.playgroung;
 import java.text.Normalizer;
 
 /**
- *
+ * This class provides several utility methods for string manipulation.
+ * 
+ * <p>Methods included:
+ * <ul>
+ *   <li>{@link #reverteStringLoop(String)} - Reverses a string using a loop.</li>
+ *   <li>{@link #reverteStringBuffer(String)} - Reverses a string using StringBuilder.</li>
+ *   <li>{@link #reverteStringRecursivo(String)} - Reverses a string using recursion.</li>
+ *   <li>{@link #isPalindromo(String)} - Checks if a string is a palindrome.</li>
+ * </ul>
+ * </p>
+ * 
  * @author adrianotavares
  */
 public class JavaPlayground {
 
     public static String reverteStringLoop(String s) {
-        char[] resultado = new char[s.length()];
-        int ultimaPosicao = s.length() - 1;
-        for (int i = 0; i <= ultimaPosicao; i++) {
-            resultado[ultimaPosicao - i] = s.charAt(i);
+        char[] r = new char[s.length()];
+        int lastPosition = s.length() - 1;
+        for (int i = 0; i <= lastPosition; i++) {
+            r[lastPosition - i] = s.charAt(i);
         }
-        return new String(resultado);
+        return new String(r);
     }
 
     public static String reverteStringBuffer(String s) {
@@ -32,18 +42,21 @@ public class JavaPlayground {
     }
 
     public static boolean isPalindromo(String s) {
+        // The palindrome check method normalizes the string by removing 
+        // diacritical marks and non-alphanumeric characters, and converts it 
+        // to lowercase before performing the check.</p>
         s = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
         s = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
 
-        int esquerda = 0;
-        int direita = s.length() - 1;
+        int left = 0;
+        int right = s.length() - 1;
     
-        while (esquerda < direita) {
-            if (s.charAt(esquerda) != s.charAt(direita)) {
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
                 return false;
             }
-            esquerda++;
-            direita--;
+            left++;
+            right--;
         }
         return true;
     }
