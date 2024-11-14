@@ -32,8 +32,15 @@ To run the code, follow these steps:
 
 3. Run the main class:
     ```sh
-    mvn exec:java -Dexec.mainClass="org.adrianotavares.JavaPlayground"
+    mvn exec:java 
     ```
+or
+    ```sh
+    mvn package
+    cd target
+    java -jar javaplaygroung-1.0-SNAPSHOT.jar
+    ```
+
 
 ## License
 

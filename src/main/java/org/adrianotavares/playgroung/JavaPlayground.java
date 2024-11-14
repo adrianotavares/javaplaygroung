@@ -60,7 +60,6 @@ public class JavaPlayground {
         }
         return true;
     }
-
     public static void main(String[] args) {
        /*
         * Reverse a string
