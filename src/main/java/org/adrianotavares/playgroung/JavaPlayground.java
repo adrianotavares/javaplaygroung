@@ -16,7 +16,6 @@ import java.util.Arrays;
  * <li>{@link #isAnagram(String, String)} - Checks if two strings are anagrams using sorting.</li>
  * <li>{@link #isAnagram2(String, String)} - Checks if two strings are anagrams using character counting.</li>
  * </ul>
- * 
  * </p>
  *
  * @author adrianotavares
