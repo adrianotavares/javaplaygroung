@@ -35,7 +35,12 @@ To run the code, follow these steps:
     mvn exec:java 
     ```
 
-4. Run the jar file:
+4. Package the project into jar file:
+    ```sh
+    mvn package
+    ```
+
+5. Run the jar file:
     ```sh
     java -jar javaplaygroung-1.0-SNAPSHOT.jar
     ```
