@@ -6,18 +6,9 @@ Welcome to the Java Playground! This project is dedicated to studying algorithms
 
 The main objective of this project is to explore and understand various algorithms implemented in Java.
 
-## Project Structure
+## Content
 
-This project uses Maven for dependency management and build automation. The source code is organized as follows:
-
-``` 
-/src
-    /main
-        /java
-            /org
-                /adrianotavares
-                    /playgroung
-```
+The content of this project is inspired by Weberton's Blog, which provides valuable insights and examples of algorithms in Java. This project uses Maven for dependency management and build automation. 
 
 ## Getting Started
 
@@ -27,9 +18,22 @@ To get started with this project, you need to have Maven installed. You can buil
 mvn clean install
 ```
 
-## Content
+To run the code, follow these steps:
 
-The content of this project is inspired by Weberton's Blog, which provides valuable insights and examples of algorithms in Java.
+1. Navigate to the project directory:
+    ```sh
+    cd /Users/adrianotavares/dev/javaplaygroung
+    ```
+
+2. Compile the project using Maven:
+    ```sh
+    mvn compile
+    ```
+
+3. Run the main class:
+    ```sh
+    mvn exec:java -Dexec.mainClass="org.adrianotavares.JavaPlayground"
+    ```
 
 ## License
 
