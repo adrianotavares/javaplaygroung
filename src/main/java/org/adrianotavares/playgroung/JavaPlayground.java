@@ -10,11 +10,15 @@ import java.util.Arrays;
  * Methods included:
  * <ul>
  * <li>{@link #reverteStringLoop(String)} - Reverses a string using a loop.</li>
- * <li>{@link #reverteStringBuffer(String)} - Reverses a string using StringBuilder.</li>
- * <li>{@link #reverteStringRecursive(String)} - Reverses a string using recursion.</li>
+ * <li>{@link #reverteStringBuffer(String)} - Reverses a string using
+ * StringBuilder.</li>
+ * <li>{@link #reverteStringRecursive(String)} - Reverses a string using
+ * recursion.</li>
  * <li>{@link #isPalindrome(String)} - Checks if a string is a palindrome.</li>
- * <li>{@link #isAnagram(String, String)} - Checks if two strings are anagrams using sorting.</li>
- * <li>{@link #isAnagram2(String, String)} - Checks if two strings are anagrams using character counting.</li>
+ * <li>{@link #isAnagram(String, String)} - Checks if two strings are anagrams
+ * using sorting.</li>
+ * <li>{@link #isAnagram2(String, String)} - Checks if two strings are anagrams
+ * using character counting.</li>
  * </ul>
  * </p>
  *
@@ -132,24 +136,60 @@ public class JavaPlayground {
         return true;
     }
 
+    /**
+     * Bubble sort algorithm.
+     */
+    public static void bubbleSort(int[] array) {
+        boolean swap = true;
+        int n = array.length - 1;
+        while (swap) {
+            swap = false; // Start with swap as false
+            // Iterate through the array
+            for (int i = 0; i < n; i++) {
+                // Compare the current element with the next element
+                if (array[i] > array[i + 1]) {
+                    swap(array, i, i + 1);
+                    swap = true; // Change swap to true, if elements are swapped
+                }
+         }
+        n--; // Reduce the number of elements to sort
+        }
+    }    
+    /**
+     * Bubble sort swap method to swap two elements in an array.
+     */
+    public static void swap(int[] elementos, int i, int j) {
+        int temp = elementos[i]; // Save the current element
+        elementos[i] = elementos[j]; // Change the current element
+        elementos[j] = temp; // Complete the swap
+    }
+
     public static void main(String[] args) {
         /*
-        * Reverse a string
+         * Reverse a string
          */
         String s = "ABCD";
-        System.out.println("reverteStringLoop:"+reverteStringLoop(s));
-        System.out.println("reverteStringBuffer:"+reverteStringBuffer(s));
-        System.out.println("reverteStringRecursive:"+reverteStringRecursive(s));
+        System.out.println("reverteStringLoop:" + reverteStringLoop(s));
+        System.out.println("reverteStringBuffer:" + reverteStringBuffer(s));
+        System.out.println("reverteStringRecursive:" + reverteStringRecursive(s));
 
         /*
-        * Check if a string is a palindrome
+         * Check if a string is a palindrome
          */
         System.out.println("isPalindrome:" + isPalindrome("Ame a ema"));
 
         /*
-        * Check if a string is an anagram
+         * Check if a string is an anagram
          */
         System.out.println("isAnagram:" + isAnagram("rumo", "muro"));
         System.out.println("isAnagram2:" + isAnagram2("roma", "amor"));
+
+        /*
+         * Bubble sort
+         */
+        int[] array = {5, 3, 8, 4, 2};
+        System.out.println("Before bubble sorting: " + Arrays.toString(array));
+        bubbleSort(array);
+        System.out.println("After bubble sorting: " + Arrays.toString(array));
     }
 }
