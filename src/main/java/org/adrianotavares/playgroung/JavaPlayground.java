@@ -161,7 +161,7 @@ public class JavaPlayground {
     public static void swap(int[] elementos, int i, int j) {
         int temp = elementos[i]; // Save the current element
         elementos[i] = elementos[j]; // Change the current element
-        elementos[j] = temp; // Complete the swap
+        elementos[j] = temp; // Complete the swap updating the other element
     }
 
     public static void main(String[] args) {
