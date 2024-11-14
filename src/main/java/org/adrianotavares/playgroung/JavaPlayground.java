@@ -23,6 +23,9 @@ import java.util.Arrays;
  */
 public class JavaPlayground {
 
+    /**
+     * Reverses a string using a loop.
+     */
     public static String reverteStringLoop(String s) {
         char[] r = new char[s.length()];
         int lastPosition = s.length() - 1;
@@ -32,10 +35,16 @@ public class JavaPlayground {
         return new String(r);
     }
 
+    /**
+     * Reverses a string using StringBuilder.
+     */
     public static String reverteStringBuffer(String s) {
         return new StringBuilder(s).reverse().toString();
     }
 
+    /**
+     * Reverses a string using recursion.
+     */
     public static String reverteStringRecursive(String s) {
         // Base case: if the string is null or has only one character
         if (s == null || s.length() <= 1) {
@@ -46,6 +55,9 @@ public class JavaPlayground {
         return reverteStringRecursive(s.substring(1)) + s.charAt(0);
     }
 
+    /**
+     * Checks if a string is a palindrome using a loop.
+     */
     public static boolean isPalindrome(String s) {
         // The palindrome check method normalizes the string by removing 
         // diacritical marks and non-alphanumeric characters, and converts it 
@@ -66,6 +78,9 @@ public class JavaPlayground {
         return true;
     }
 
+    /**
+     * Checks if two strings are anagrams using sorting.
+     */
     public static boolean isAnagram(String str1, String str2) {
         // Verify if the strings have the same length
         if (str1.length() != str2.length()) {
@@ -84,6 +99,9 @@ public class JavaPlayground {
         return Arrays.equals(a, b); // if the arrays are equal, they are anagrams
     }
 
+    /**
+     * Checks if two strings are anagrams using character counting.
+     */
     public static boolean isAnagram2(String str1, String str2) {
         // Verify if the strings have the same length
         // if different, they are not anagrams
