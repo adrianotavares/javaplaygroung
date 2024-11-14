@@ -1,19 +1,24 @@
 package org.adrianotavares.playgroung;
 
 import java.text.Normalizer;
+import java.util.Arrays;
 
 /**
  * This class provides several utility methods for string manipulation.
- * 
- * <p>Methods included:
+ *
+ * <p>
+ * Methods included:
  * <ul>
- *   <li>{@link #reverteStringLoop(String)} - Reverses a string using a loop.</li>
- *   <li>{@link #reverteStringBuffer(String)} - Reverses a string using StringBuilder.</li>
- *   <li>{@link #reverteStringRecursivo(String)} - Reverses a string using recursion.</li>
- *   <li>{@link #isPalindromo(String)} - Checks if a string is a palindrome.</li>
+ * <li>{@link #reverteStringLoop(String)} - Reverses a string using a loop.</li>
+ * <li>{@link #reverteStringBuffer(String)} - Reverses a string using StringBuilder.</li>
+ * <li>{@link #reverteStringRecursive(String)} - Reverses a string using recursion.</li>
+ * <li>{@link #isPalindrome(String)} - Checks if a string is a palindrome.</li>
+ * <li>{@link #isAnagram(String, String)} - Checks if two strings are anagrams using sorting.</li>
+ * <li>{@link #isAnagram2(String, String)} - Checks if two strings are anagrams using character counting.</li>
  * </ul>
- * </p>
  * 
+ * </p>
+ *
  * @author adrianotavares
  */
 public class JavaPlayground {
@@ -31,17 +36,17 @@ public class JavaPlayground {
         return new StringBuilder(s).reverse().toString();
     }
 
-    public static String reverteStringRecursivo(String s) {
-        // Caso base: se a string estiver vazia ou tiver apenas um caractere
+    public static String reverteStringRecursive(String s) {
+        // Base case: if the string is null or has only one character
         if (s == null || s.length() <= 1) {
             return s;
         }
-        // Chamada recursiva com a substring excluindo o primeiro caractere
-        // e anexando o primeiro caractere no final
-        return reverteStringRecursivo(s.substring(1)) + s.charAt(0);
+        // calling the method recursively, removing the first character
+        // and concatenating it to the end of the string
+        return reverteStringRecursive(s.substring(1)) + s.charAt(0);
     }
 
-    public static boolean isPalindromo(String s) {
+    public static boolean isPalindrome(String s) {
         // The palindrome check method normalizes the string by removing 
         // diacritical marks and non-alphanumeric characters, and converts it 
         // to lowercase before performing the check.</p>
@@ -50,7 +55,7 @@ public class JavaPlayground {
 
         int left = 0;
         int right = s.length() - 1;
-    
+
         while (left < right) {
             if (s.charAt(left) != s.charAt(right)) {
                 return false;
@@ -60,21 +65,74 @@ public class JavaPlayground {
         }
         return true;
     }
-    public static void main(String[] args) {
-       /*
-        * Reverse a string
-        */
-       String s =  "ABCD";
-       String r = reverteStringLoop(s);
-       System.out.println(r);
-       r = reverteStringBuffer(s);
-       System.out.println(r);
-       r = reverteStringRecursivo(s);
-       System.out.println(r);
 
-       /*
+    public static boolean isAnagram(String str1, String str2) {
+        // Verify if the strings have the same length
+        if (str1.length() != str2.length()) {
+            return false; // if different, they are not anagrams
+        }
+
+        // Convert the strings to arrays of characters
+        char[] a = str1.toCharArray();
+        char[] b = str2.toCharArray();
+
+        // Order the arrays
+        Arrays.sort(a); // Order the first array
+        Arrays.sort(b); // Order the second array
+
+        // Compare the arrays
+        return Arrays.equals(a, b); // if the arrays are equal, they are anagrams
+    }
+
+    public static boolean isAnagram2(String str1, String str2) {
+        // Verify if the strings have the same length
+        // if different, they are not anagrams
+        if (str1.length() != str2.length()) {
+            return false;
+        }
+
+        // Crate an array to count the characters
+        // The array has 256 positions, one for each ASCII character
+        int[] counter = new int[256];
+
+        // Loop through the strings
+        for (int i = 0; i < str1.length(); i++) {
+            // Increment the counter for the current character of str1
+            counter[str1.charAt(i)]++;
+            // Decrease the counter for the current character of str2
+            counter[str2.charAt(i)]--;
+        }
+
+        // Verify if the counters are zero
+        // If any counter is different from zero, the strings are not anagrams
+        for (int count : counter) {
+            if (count != 0) {
+                return false;
+            }
+        }
+
+        // If all counters are zero, the strings are anagrams
+        return true;
+    }
+
+    public static void main(String[] args) {
+        /*
+        * Reverse a string
+         */
+        String s = "ABCD";
+        System.out.println("reverteStringLoop:"+reverteStringLoop(s));
+        System.out.println("reverteStringBuffer:"+reverteStringBuffer(s));
+        System.out.println("reverteStringRecursive:"+reverteStringRecursive(s));
+
+        /*
         * Check if a string is a palindrome
-        */        
-       System.out.println(isPalindromo("Ame a ema"));
+         */
+        System.out.println("isPalindrome:" + isPalindrome("Ame a ema"));
+
+        /*
+        * Check if a string is an anagram
+         */
+        System.out.println("isAnagram:" + isAnagram("rumo", "muro"));
+        System.out.println("isAnagram2:" + isAnagram2("roma", "amor"));
     }
 }
