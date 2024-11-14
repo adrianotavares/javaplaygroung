@@ -151,17 +151,133 @@ public class JavaPlayground {
                     swap(array, i, i + 1);
                     swap = true; // Change swap to true, if elements are swapped
                 }
-         }
-        n--; // Reduce the number of elements to sort
+            }
+            n--; // Reduce the number of elements to sort
         }
-    }    
+    }
+
     /**
      * Bubble sort swap method to swap two elements in an array.
      */
-    public static void swap(int[] elementos, int i, int j) {
+    private static void swap(int[] elementos, int i, int j) {
         int temp = elementos[i]; // Save the current element
         elementos[i] = elementos[j]; // Change the current element
         elementos[j] = temp; // Complete the swap updating the other element
+    }
+
+    /**
+     * Merge sort algorithm. The principal method for merge sort.
+     */
+    public static void mergeSort(int[] array) {
+        // Um array temporário é usado para auxiliar na fusão dos subarrays
+        mergeSort(array, new int[array.length], 0, array.length - 1);
+    }
+
+    /**
+     * Auxliliar method for merge sort, uses the divide and conquer approach.
+     */
+    private static void mergeSort(int[] array, int[] temp, int inicioEsquerda, int fimDireita) {
+        // Condição de base: se o subarray tem um único elemento, não é necessário ordenar
+        if (inicioEsquerda >= fimDireita) {
+            return;
+        }
+
+        // Encontra o ponto médio para dividir o array em subarrays
+        int meio = (inicioEsquerda + fimDireita) / 2;
+        // Ordena recursivamente a metade esquerda do array
+        mergeSort(array, temp, inicioEsquerda, meio);
+        // Ordena recursivamente a metade direita do array
+        mergeSort(array, temp, meio + 1, fimDireita);
+        // Funde as duas metades ordenadas
+        merge(array, temp, inicioEsquerda, fimDireita);
+    }
+
+    /**
+     * Auxiliar method for merge sort, merges two sorted halves of an array into
+     * a single sorted subarray.
+     */
+    private static void merge(int[] array, int[] temp, int inicioEsquerda, int fimDireita) {
+        // Calcula o fim do subarray esquerdo e o início do subarray direito
+        int fimEsquerda = (inicioEsquerda + fimDireita) / 2;
+        int inicioDireita = fimEsquerda + 1;
+        // Inicializa os ponteiros para acompanhar a posição atual em cada subarray e no array temporário
+        int esquerdaAtual = inicioEsquerda;
+        int direitaAtual = inicioDireita;
+        int tempIndice = inicioEsquerda;
+
+        // Enquanto houver elementos em ambos os subarrays, compara e ordena no array temporário
+        while (esquerdaAtual <= fimEsquerda && direitaAtual <= fimDireita) {
+            if (array[esquerdaAtual] < array[direitaAtual]) {
+                temp[tempIndice++] = array[esquerdaAtual++];
+            } else {
+                temp[tempIndice++] = array[direitaAtual++];
+            }
+        }
+
+        // Copia os elementos restantes do subarray esquerdo para o array temporário
+        System.arraycopy(array, esquerdaAtual, temp, tempIndice, fimEsquerda - esquerdaAtual + 1);
+        // Copia os elementos restantes do subarray direito para o array temporário
+        System.arraycopy(array, direitaAtual, temp, tempIndice, fimDireita - direitaAtual + 1);
+        // Copia os elementos do array temporário de volta para o array original
+        System.arraycopy(temp, inicioEsquerda, array, inicioEsquerda, fimDireita - inicioEsquerda + 1);
+    }
+
+    /**
+     * Quick sort algorithm.
+     */
+    public static void quicksort(int[] nums) {
+        quicksort(nums, 0, nums.length - 1);
+    }
+
+    // Método sobrecarregado do Quick Sort para trabalhar com sub-arrays
+    private static void quicksort(int[] numeros, int esquerda, int direita) {
+        // Base da recursão: se há apenas um elemento ou nenhum, não é necessário ordenar
+        if (esquerda < direita) {
+            // Particionar o array e obter a posição do pivô
+            int partition = particionar(numeros, esquerda, direita);
+            // Ordenar recursivamente a parte esquerda do pivô
+            quicksort(numeros, esquerda, partition - 1);
+            // Ordenar recursivamente a parte direita do pivô
+            quicksort(numeros, partition + 1, direita);
+        }
+    }
+
+    // Método para particionar o array e rearranjar os elementos em relação ao pivô
+    private static int particionar(int[] numeros, int esquerda, int direita) {
+        // Inicializa o pivô Index no começo do sub-array
+        int pIndex = esquerda;
+        // O pivô é escolhido como o elemento mais à direita do sub-array
+        int pivo = numeros[direita];
+        // Iterar sobre os elementos do sub-array
+        for (int i = esquerda; i < direita; i++) {
+            // Se o elemento atual é menor que o pivô, ele deve ir para a esquerda do pivô Index
+            if (numeros[i] < pivo) {
+                // Trocar o elemento no pivô Index com o elemento atual
+                int temp = numeros[pIndex];
+                numeros[pIndex] = numeros[i];
+                numeros[i] = temp;
+                // Mover o pivô Index uma posição para a direita
+                pIndex++;
+            }
+        }
+
+        // Colocar o pivô na posição correta no meio do sub-array
+        int temp = numeros[direita];
+        numeros[direita] = numeros[pIndex];
+        numeros[pIndex] = temp;
+        // Retornar a posição do pivô Index, agora que o pivô está no lugar certo
+        return pIndex;
+    }
+
+    /**
+     * Método auxiliar para criar um array de inteiros com valores aleatórios.
+     */
+    private static int[] createArray(int size) {
+        int[] array = new int[size];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = (int) (Math.random() * 100);
+        }
+        return array;
     }
 
     public static void main(String[] args) {
@@ -184,12 +300,38 @@ public class JavaPlayground {
         System.out.println("isAnagram:" + isAnagram("rumo", "muro"));
         System.out.println("isAnagram2:" + isAnagram2("roma", "amor"));
 
+        /**
+         * Sorting algorithms
+         */
+        int size = 100000;
+        int[] array = createArray(size);
+        System.out.println("Array Size: " + size);
+        
         /*
          * Bubble sort
+         * Complexity: O(n^2)
          */
-        int[] array = {5, 3, 8, 4, 2};
-        System.out.println("Before bubble sorting: " + Arrays.toString(array));
+        Timer timer = new Timer();
         bubbleSort(array);
-        System.out.println("After bubble sorting: " + Arrays.toString(array));
+        System.out.println("Time to bubble sort: " + timer);
+        
+        /*
+         * Merge sort
+         * Complexity: O(n log n)
+         */
+        array = createArray(size);
+        timer = new Timer();
+        mergeSort(array);
+        System.out.println("Time to merge sort: " + timer);
+        
+        /*
+         * Quick sort
+         * Complexity: O(n log n) average, O(n^2) worst case
+         */
+        array = createArray(size);
+        timer = new Timer();
+        quicksort(array);
+        System.out.println("Time to quick sort: " + timer);
+        
     }
 }
