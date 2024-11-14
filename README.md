@@ -37,4 +37,4 @@ This project is licensed under the MIT License.
 
 ## Acknowledgements
 
-Special thanks to Weberton for the inspiration and content provided in his blog.
+Special thanks to Weberton for the inspiration and content provided in his blog [Art of Coding](https://artofcoding.tech).
