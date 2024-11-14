@@ -1,10 +1,10 @@
 # Java Playground
 
-Welcome to the Java Playground! This project is dedicated to studying algorithms in Java.
+Welcome to the Java Playground! 
 
 ## Objective
 
-The main objective of this project is to explore and understand various algorithms implemented in Java.
+This project is dedicated to algorithms in Java. The main objective is to explore and understand various algorithms to improove problem solving skill.
 
 ## Content
 
