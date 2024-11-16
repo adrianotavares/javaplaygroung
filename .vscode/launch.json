@@ -6,12 +6,18 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Timer",
+            "request": "launch",
+            "mainClass": "org.adrianotavares.playgroung.Timer",
+            "projectName": "javaplaygroung"
+        },
+        {
+            "type": "java",
             "name": "Java Playground",
             "request": "launch",
             "mainClass": "org.adrianotavares.playgroung.JavaPlayground",
             "projectName": "javaplaygroung"
         }
-
     ]
     
 }
