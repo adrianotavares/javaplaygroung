@@ -12,7 +12,7 @@ The content of this project is inspired by Weberton's Blog, which provides valua
 
 ## Getting Started
 
-To get started with this project, you need to have Maven installed. You can build the project using the following command:
+To get started with this project, you need to have JDK and Maven installed. You can build the project using the following command:
 
 ```sh
 mvn clean install
@@ -49,6 +49,13 @@ To run the code, follow these steps:
     ```sh
     java -jar javaplaygroung-1.0-SNAPSHOT.jar
     ```
+
+## Links
+
+- [JDK 23 Downloads for macOS](https://www.oracle.com/java/technologies/downloads/#jdk23-mac)
+- [JDK 23 Documentation](https://docs.oracle.com/en/java/javase/23/index.html)
+- [VS Code](https://code.visualstudio.com)
+- [VS Code Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
 
 ## License
 

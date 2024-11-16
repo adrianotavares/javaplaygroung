@@ -5,9 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "jdk",
+            "type": "java",
+            "name": "Java Playground",
             "request": "launch",
-            "name": "Launch Java Playground"
+            "mainClass": "org.adrianotavares.playgroung.JavaPlayground",
+            "projectName": "javaplaygroung"
         }
+
     ]
+    
 }

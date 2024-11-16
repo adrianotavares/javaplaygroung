@@ -62,8 +62,8 @@ public class JavaPlayground {
      * Checks if a string is a palindrome using a loop.
      */
     public static boolean isPalindrome(String s) {
-        // The palindrome check method normalizes the string by removing 
-        // diacritical marks and non-alphanumeric characters, and converts it 
+        // The palindrome check method normalizes the string by removing
+        // diacritical marks and non-alphanumeric characters, and converts it
         // to lowercase before performing the check.</p>
         s = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
         s = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
@@ -177,7 +177,8 @@ public class JavaPlayground {
      * Auxliliar method for merge sort, uses the divide and conquer approach.
      */
     private static void mergeSort(int[] array, int[] temp, int inicioEsquerda, int fimDireita) {
-        // Condição de base: se o subarray tem um único elemento, não é necessário ordenar
+        // Condição de base: se o subarray tem um único elemento, não é necessário
+        // ordenar
         if (inicioEsquerda >= fimDireita) {
             return;
         }
@@ -193,19 +194,21 @@ public class JavaPlayground {
     }
 
     /**
-     * Auxiliar method for merge sort, merges two sorted halves of an array into
-     * a single sorted subarray.
+     * Auxiliar method for merge sort, merges two sorted halves of an array into a
+     * single sorted subarray.
      */
     private static void merge(int[] array, int[] temp, int inicioEsquerda, int fimDireita) {
         // Calcula o fim do subarray esquerdo e o início do subarray direito
         int fimEsquerda = (inicioEsquerda + fimDireita) / 2;
         int inicioDireita = fimEsquerda + 1;
-        // Inicializa os ponteiros para acompanhar a posição atual em cada subarray e no array temporário
+        // Inicializa os ponteiros para acompanhar a posição atual em cada subarray e no
+        // array temporário
         int esquerdaAtual = inicioEsquerda;
         int direitaAtual = inicioDireita;
         int tempIndice = inicioEsquerda;
 
-        // Enquanto houver elementos em ambos os subarrays, compara e ordena no array temporário
+        // Enquanto houver elementos em ambos os subarrays, compara e ordena no array
+        // temporário
         while (esquerdaAtual <= fimEsquerda && direitaAtual <= fimDireita) {
             if (array[esquerdaAtual] < array[direitaAtual]) {
                 temp[tempIndice++] = array[esquerdaAtual++];
@@ -231,7 +234,8 @@ public class JavaPlayground {
 
     // Método sobrecarregado do Quick Sort para trabalhar com sub-arrays
     private static void quicksort(int[] numeros, int esquerda, int direita) {
-        // Base da recursão: se há apenas um elemento ou nenhum, não é necessário ordenar
+        // Base da recursão: se há apenas um elemento ou nenhum, não é necessário
+        // ordenar
         if (esquerda < direita) {
             // Particionar o array e obter a posição do pivô
             int partition = particionar(numeros, esquerda, direita);
@@ -250,7 +254,8 @@ public class JavaPlayground {
         int pivo = numeros[direita];
         // Iterar sobre os elementos do sub-array
         for (int i = esquerda; i < direita; i++) {
-            // Se o elemento atual é menor que o pivô, ele deve ir para a esquerda do pivô Index
+            // Se o elemento atual é menor que o pivô, ele deve ir para a esquerda do pivô
+            // Index
             if (numeros[i] < pivo) {
                 // Trocar o elemento no pivô Index com o elemento atual
                 int temp = numeros[pIndex];
@@ -303,35 +308,32 @@ public class JavaPlayground {
         /**
          * Sorting algorithms
          */
-        int size = 100000;
+        int size = 100000; // Comparing the sorting algorithms with an array of hundred thousand elements
         int[] array = createArray(size);
         System.out.println("Array Size: " + size);
-        
+
         /*
-         * Bubble sort
-         * Complexity: O(n^2)
+         * Bubble sort Complexity: O(n^2)
          */
         Timer timer = new Timer();
         bubbleSort(array);
         System.out.println("Time to bubble sort: " + timer);
-        
+
         /*
-         * Merge sort
-         * Complexity: O(n log n)
+         * Merge sort Complexity: O(n log n)
          */
         array = createArray(size);
         timer = new Timer();
         mergeSort(array);
         System.out.println("Time to merge sort: " + timer);
-        
+
         /*
-         * Quick sort
-         * Complexity: O(n log n) average, O(n^2) worst case
+         * Quick sort Complexity: O(n log n) average, O(n^2) worst case
          */
         array = createArray(size);
         timer = new Timer();
         quicksort(array);
         System.out.println("Time to quick sort: " + timer);
-        
+
     }
 }
