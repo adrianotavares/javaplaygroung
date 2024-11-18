@@ -10,6 +10,18 @@ This project is dedicated to algorithms in Java. The main objective is to explor
 
 The content of this project is inspired by Weberton's Blog, which provides valuable insights and examples of algorithms in Java. This project uses Maven for dependency management and build automation.
 
+Algoritms included:
+
+- Reverses a string using a loop
+- Reverses a string using StringBuilder
+- Reverses a string using recursion
+- Checks if a string is a palindrome
+- Checks if two strings are anagrams using sorting
+- Checks if two strings are anagrams using character counting
+- Bublle Sort
+- Merge Sort
+- Quick Sort
+
 ## Getting Started
 
 To get started with this project, you need to have JDK and Maven installed. You can build the project using the following command:

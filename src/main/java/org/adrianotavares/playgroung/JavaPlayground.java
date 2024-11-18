@@ -6,22 +6,6 @@ import java.util.Arrays;
 /**
  * This class provides several utility methods for string manipulation.
  *
- * <p>
- * Methods included:
- * <ul>
- * <li>{@link #reverteStringLoop(String)} - Reverses a string using a loop.</li>
- * <li>{@link #reverteStringBuffer(String)} - Reverses a string using
- * StringBuilder.</li>
- * <li>{@link #reverteStringRecursive(String)} - Reverses a string using
- * recursion.</li>
- * <li>{@link #isPalindrome(String)} - Checks if a string is a palindrome.</li>
- * <li>{@link #isAnagram(String, String)} - Checks if two strings are anagrams
- * using sorting.</li>
- * <li>{@link #isAnagram2(String, String)} - Checks if two strings are anagrams
- * using character counting.</li>
- * </ul>
- * </p>
- *
  * @author adrianotavares
  */
 public class JavaPlayground {
